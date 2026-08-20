@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <span class="eyebrow">Order placed</span>
+  <div class="confirmation-card">
+    <div class="checkmark">✓</div>
+    <h1>Order Confirmed</h1>
+    <p>You ordered: <strong><%= order.itemName %></strong> — Nu. <%= order.price %></p>
+    <a href="/menu" class="btn">Back to Menu</a>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<section class="menu-page">
+  <h1>Menu</h1>
+  <div class="menu-grid">
+    <% menuItems.forEach(item => { %>
+      <div class="menu-item">
+        <h3><%= item.name %></h3>
+        <span class="price">Nu. <%= item.price %></span>
+        <form method="POST" action="/orders">
+          <input type="hidden" name="itemName" value="<%= item.name %>">
+          <input type="hidden" name="price" value="<%= item.price %>">
+          <button type="submit" class="btn">Order Now</button>
+        </form>
+      </div>
+    <% }); %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+

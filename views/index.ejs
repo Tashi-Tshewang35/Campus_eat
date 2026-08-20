@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+<section class="hero">
+  <span class="eyebrow">Multi-restaurant ordering</span>
+  <h1>Welcome to Campus Eats</h1>
+  <p>Order from multiple restaurants, all in one place.</p>
+</section>
+
+<section class="restaurants">
+  <h2>Popular Restaurants</h2>
+  <div class="restaurant-grid">
+    <% restaurants.forEach(r => { %>
+      <div class="restaurant-card">
+        <div class="avatar"><%= r.name.charAt(0) %></div>
+        <h3><%= r.name %></h3>
+        <p><%= r.cuisine %></p>
+        <span class="rating-pill">★ <%= r.rating %></span>
+        <a href="/menu" class="btn">View Menu</a>
+      </div>
+    <% }); %>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
+
+
+

@@ -1,0 +1,215 @@
+:root {
+  --primary: #ff5a3c;
+  --primary-tint: #fff1ec;
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --border: #ececec;
+  --radius: 16px;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.site-header nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 999px;
+  margin-left: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.site-header nav a:hover {
+  background-color: var(--primary-tint);
+  color: var(--primary);
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.hero {
+  text-align: center;
+  padding: 20px 0 50px;
+}
+
+.eyebrow {
+  display: inline-block;
+  background-color: var(--primary-tint);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0 0 16px;
+  background: linear-gradient(90deg, var(--primary), #ff8a5c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 28px 16px;
+  background-color: var(--text);
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+.restaurants, .menu-page {
+  padding: 20px 0 40px;
+}
+
+.restaurants h2, .menu-page h1 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.restaurant-grid, .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.restaurant-card, .menu-item {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.restaurant-card:hover, .menu-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.restaurant-card h3, .menu-item h3 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #ff8a5c);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0 auto 16px;
+}
+
+.rating-pill {
+  display: block;
+  width: fit-content;
+  background-color: var(--primary-tint);
+  color: var(--primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin: 8px auto 16px;
+}
+
+.price {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 8px 0 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  background: linear-gradient(90deg, var(--primary), #ff8a5c);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.confirmation-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  box-shadow: var(--shadow);
+  max-width: 420px;
+  margin: 24px auto 0;
+}
+
+.checkmark {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #ff8a5c);
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
