@@ -214,3 +214,69 @@ main {
   margin: 0 auto 20px;
 }
 
+.quantity-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.quantity-form input {
+  width: 60px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  text-align: center;
+  font-family: inherit;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: var(--text);
+  box-shadow: none;
+}
+
+.btn-danger {
+  background: #e63946;
+  margin-top: 8px;
+}
+
+.stats-bar {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.popular {
+  padding: 20px 0 10px;
+}
+
+.popular h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.popular-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.popular-item {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.popular-item h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
