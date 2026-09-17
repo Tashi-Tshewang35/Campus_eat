@@ -280,3 +280,35 @@ main {
   margin: 0 0 8px;
   font-size: 1rem;
 }
+
+.order-lookup {
+  text-align: center;
+  padding: 10px 0 30px;
+}
+
+.order-lookup h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.lookup-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.lookup-box input {
+  width: 140px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-family: inherit;
+}
+
+#lookupResult {
+  margin-top: 16px;
+  color: var(--text-muted);
+  font-weight: 600;
+  min-height: 1.5em;
+}
