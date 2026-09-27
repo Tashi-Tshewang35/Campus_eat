@@ -10,10 +10,21 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="logo">🍽️ Campus Eats</div>
+    <div class="logo">&#127869; Campus Eats</div>
     <nav>
       <a href="/">Home</a>
       <a href="/about">About</a>
+      <% if (user) { %>
+        <% if (user.role === 'admin') { %><a href="/admin/dashboard">My Dashboard</a><% } %>
+        <% if (user.role === 'superadmin') { %><a href="/superadmin/dashboard">Super Admin</a><% } %>
+        <span>Hi, <%= user.name %></span>
+        <form action="/logout" method="POST" style="display:inline;">
+          <button type="submit" class="link-btn">Log Out</button>
+        </form>
+      <% } else { %>
+        <a href="/login">Log In</a>
+        <a href="/signup">Sign Up</a>
+      <% } %>
     </nav>
   </header>
   <main>

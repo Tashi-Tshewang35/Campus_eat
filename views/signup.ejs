@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+<section class="auth-form">
+  <h1>Create an Account</h1>
+  <p class="form-hint">Use your Sherubtse College RUB email — it must end in .sherubtse@rub.edu.bt</p>
+  <% if (error) { %><p class="error"><%= error %></p><% } %>
+  <form action="/signup" method="POST">
+    <input type="text" name="name" placeholder="Full name" required>
+    <input type="email" name="email" placeholder="you.sherubtse@rub.edu.bt" required>
+    <input type="password" name="password" placeholder="Password" minlength="6" required>
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="/login">Log in</a></p>
+</section>
+<%- include('partials/footer') %>

@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+<section class="admin-dashboard">
+  <h1>My Dashboard</h1>
+  <% if (!restaurant) { %>
+    <p>No restaurant is linked to this account yet.</p>
+  <% } else { %>
+    <h2><%= restaurant.name %> — <%= restaurant.cuisine %></h2>
+    <table>
+      <tr><th>Item</th><th>Price</th><th>Times Ordered</th></tr>
+      <% items.forEach(item => { %>
+        <tr><td><%= item.name %></td><td>Nu. <%= item.price %></td><td><%= item.times_ordered %></td></tr>
+      <% }) %>
+    </table>
+    <h3>Add a Menu Item</h3>
+    <form action="/admin/menu" method="POST">
+      <input type="text" name="name" placeholder="Item name" required>
+      <input type="number" name="price" placeholder="Price" min="1" required>
+      <button type="submit">Add Item</button>
+    </form>
+  <% } %>
+</section>
+<%- include('partials/footer') %>

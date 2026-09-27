@@ -1,0 +1,45 @@
+<%- include('partials/header') %>
+<section class="superadmin-dashboard">
+  <h1>Super Admin</h1>
+  <% if (error) { %><p class="error"><%= error %></p><% } %>
+
+  <h2>All Restaurants</h2>
+  <table>
+    <tr><th>Name</th><th>Cuisine</th><th>Status</th><th>Admin Assigned</th><th></th></tr>
+    <% restaurants.forEach(r => { %>
+      <tr>
+        <td><%= r.name %></td>
+        <td><%= r.cuisine %></td>
+        <td><%= r.is_active ? 'Active' : 'Removed' %></td>
+        <td><%= r.owner_id ? 'Yes' : 'Unclaimed' %></td>
+        <td>
+          <% if (r.is_active) { %>
+          <form method="POST" action="/superadmin/restaurants/<%= r.id %>/remove">
+            <button type="submit" class="btn btn-danger">Remove</button>
+          </form>
+          <% } %>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+
+  <h2>Add a Restaurant</h2>
+  <form method="POST" action="/superadmin/restaurants">
+    <input type="text" name="name" placeholder="Restaurant name" required>
+    <input type="text" name="cuisine" placeholder="Cuisine" required>
+    <button type="submit">Add Restaurant</button>
+  </form>
+
+  <h2>Grant Admin Access</h2>
+  <p class="form-hint">The person must already have a Campus Eats account.</p>
+  <form method="POST" action="/superadmin/grant-admin">
+    <input type="email" name="email" placeholder="person.sherubtse@rub.edu.bt" required>
+    <select name="restaurantId" required>
+      <% restaurants.filter(r => !r.owner_id && r.is_active).forEach(r => { %>
+        <option value="<%= r.id %>"><%= r.name %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Grant Admin Access</button>
+  </form>
+</section>
+<%- include('partials/footer') %>
