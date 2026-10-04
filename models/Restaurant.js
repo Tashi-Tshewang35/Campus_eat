@@ -27,5 +27,7 @@ exports.getRestaurantById = (id) => {
 };
 
 exports.getRestaurantByOwnerId = ownerId => db.oneOrNone(
-  'SELECT * FROM restaurants WHERE owner_id = $1 AND is_active = true', [ownerId]
+  // An admin dashboard represents one restaurant. Older data may contain
+  // duplicate ownership rows, so choose the oldest active assignment.
+  'SELECT * FROM restaurants WHERE owner_id = $1 AND is_active = true ORDER BY id LIMIT 1', [ownerId]
 );

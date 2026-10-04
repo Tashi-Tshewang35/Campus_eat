@@ -9,6 +9,7 @@ const orderController = require('../controllers/orderController');
 const adminController = require('../controllers/adminController');
 const superAdminController = require('../controllers/superAdminController');
 const { requireAuth, requireAdmin, requireSuperAdmin } = require('../middleware/auth');
+const feedbackController = require('../controllers/feedbackController');
 
 // Pages
 router.get('/', homeController.getHome);
@@ -45,6 +46,14 @@ router.post('/superadmin/restaurants', requireSuperAdmin, superAdminController.a
 router.post('/superadmin/restaurants/:id/remove', requireSuperAdmin, superAdminController.removeRestaurant);
 router.post('/superadmin/grant-admin', requireSuperAdmin, superAdminController.grantAdmin);
 
+router.post('/restaurants/:id/feedback', feedbackController.submitFeedback);
+
 module.exports = router;
 
+const { connectMongo } = require('../config/mongo');
 
+router.get('/mongo-test', async (req, res) => {
+  const db = await connectMongo();
+  const collections = await db.listCollections().toArray();
+  res.json({ connected: true, collections });
+});

@@ -30,8 +30,15 @@ module.exports = { createUser, findByEmail, verifyPassword, markVerified };
 
 async function promoteToAdmin(userId, restaurantId) {
   return db.tx(async (t) => {
+    const assigned = await t.oneOrNone(
+      'UPDATE restaurants SET owner_id = $1 WHERE id = $2 AND is_active = true RETURNING id',
+      [userId, restaurantId]
+    );
+    if (!assigned) throw new Error('Active restaurant not found');
+
+    // Keep an admin linked to a single restaurant when changing assignments.
+    await t.none('UPDATE restaurants SET owner_id = NULL WHERE owner_id = $1 AND id <> $2', [userId, restaurantId]);
     await t.none("UPDATE users SET role = 'admin' WHERE id = $1", [userId]);
-    await t.none('UPDATE restaurants SET owner_id = $1 WHERE id = $2', [userId, restaurantId]);
   });
 }
 

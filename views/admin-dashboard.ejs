@@ -16,6 +16,19 @@
       <input type="text" name="name" placeholder="Item name" required>
       <input type="number" name="price" placeholder="Price" min="1" required>
       <button type="submit">Add Item</button>
+      <h3>Customer Feedback</h3>
+    <% if (feedback.length === 0) { %>
+      <p>No feedback yet.</p>
+    <% } else { %>
+      <ul class="feedback-list">
+        <% feedback.forEach(f => { %>
+          <li>
+            <strong><%= f.customerName %></strong> — <%= f.rating %>/5
+            <% if (f.comment) { %><p><%= f.comment %></p><% } %>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
     </form>
   <% } %>
 </section>

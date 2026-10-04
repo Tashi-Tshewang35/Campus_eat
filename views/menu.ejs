@@ -14,6 +14,24 @@
       </div>
     <% }); %>
   </div>
+  <section class="feedback-form">
+    <h2>Leave Feedback</h2>
+    <form method="POST" action="/restaurants/<%= restaurant.id %>/feedback">
+      <input type="text" name="customerName" placeholder="Your name"
+             value="<%= user ? user.name : '' %>" required>
+      <select name="rating" required>
+        <option value="">Rating</option>
+        <option value="5">5 — Excellent</option>
+        <option value="4">4 — Good</option>
+        <option value="3">3 — Okay</option>
+        <option value="2">2 — Poor</option>
+        <option value="1">1 — Terrible</option>
+      </select>
+      <textarea name="comment" placeholder="Optional comment"></textarea>
+      <button type="submit" class="btn">Submit Feedback</button>
+    </form>
+  </section>
+
 </section>
 
 <%- include('partials/footer') %>
