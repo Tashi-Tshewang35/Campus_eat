@@ -4,10 +4,7 @@ const session = require('express-session');
 const dotenv = require('dotenv');
 dotenv.config();
 
-
-
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // View engine
 app.set('view engine', 'ejs');
@@ -50,10 +47,4 @@ app.use((err, req, res, next) => {
   res.status(status).send(message);
 });
 
-// Start server (last)
-app.listen(PORT, () => {
-  console.log(`Campus Eats running at http://localhost:${PORT}`);
-});
-
-const { connectMongo } = require('./config/mongo');
-connectMongo().catch(err => console.error('MongoDB connection failed:', err));
+module.exports = app;

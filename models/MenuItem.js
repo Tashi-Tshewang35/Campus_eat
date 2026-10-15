@@ -12,3 +12,5 @@ exports.createMenuItem = ({ restaurantId, name, price }) => db.one(
   'INSERT INTO menu_items (restaurant_id, name, price) VALUES ($1, $2, $3) RETURNING *',
   [restaurantId, name, price]
 );
+
+
