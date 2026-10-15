@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
+const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
+if (isProduction) app.set('trust proxy', 1);
 
 // View engine
 app.set('view engine', 'ejs');
@@ -17,9 +19,16 @@ app.use(express.json());
 
 // Sessions (must come before routes)
 app.use(session({
+  ...(isProduction ? {
+    store: new (require('connect-pg-simple')(session))({
+      pgPromise: require('./config/db'),
+      createTableIfMissing: true,
+    }),
+  } : {}),
   secret: process.env.SESSION_SECRET || 'campus-eats-dev-secret',
   resave: false,
   saveUninitialized: false,
+  cookie: { httpOnly: true, sameSite: 'lax', secure: isProduction },
 }));
 
 // Make the logged-in user available to every view
